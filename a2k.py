@@ -1,5 +1,5 @@
 # a2k
-# Version: 0.9 beta
+# Version: 0.91 beta
 # Rename files using Python and regular expressions with ease.
 # Originally titled Anime-to-Kodi.
 
@@ -8,7 +8,7 @@ from tkinter import ttk
 
 
 class PathFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
 
         path_label = ttk.Label(self, text='Directory Path:')
@@ -21,7 +21,7 @@ class PathFrame(tk.Frame):
 
 
 class TypeFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
 
         mchkvar = tk.IntVar()
@@ -49,7 +49,7 @@ class TypeFrame(tk.Frame):
 
 
 class FilesFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
@@ -67,7 +67,7 @@ class FilesFrame(tk.Frame):
 
 
 class RegexFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
 
         regex_label = ttk.Label(self, text='Regex:', width=8)
@@ -80,7 +80,7 @@ class RegexFrame(tk.Frame):
 
 
 class RenameFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
 
         rename_label = ttk.Label(self, text='Rename:', width=8)
@@ -93,7 +93,7 @@ class RenameFrame(tk.Frame):
 
 
 class RegexCalcFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
 
         calc_button01 = ttk.Button(self, text='b01', width=3)
@@ -145,33 +145,40 @@ class RegexCalcFrame(tk.Frame):
 
 
 class ExecuteFrame(tk.Frame):
-    def __init__(self, root):
+    def __init__(self, parent):
         super().__init__()
 
         execute_button = ttk.Button(self, text='Execute', width=8)
         execute_button.pack(side='right', anchor='w')
 
 
-root = tk.Tk()
-root.title('a2k')
-root.geometry('640x480+100+100')
-root.grid_rowconfigure(2, weight=1)
-root.grid_columnconfigure(0, weight=1)
+class Main(tk.Frame):
+    def __init__(self, parent):
+        tk.Frame.__init__(self, parent)
 
-frame_section01 = PathFrame(root)
-frame_section02 = TypeFrame(root)
-frame_section03 = FilesFrame(root)
-frame_section04 = RegexFrame(root)
-frame_section05 = RenameFrame(root)
-frame_section06 = RegexCalcFrame(root)
-frame_section07 = ExecuteFrame(root)
+        frame_section01 = PathFrame(root)
+        frame_section02 = TypeFrame(root)
+        frame_section03 = FilesFrame(root)
+        frame_section04 = RegexFrame(root)
+        frame_section05 = RenameFrame(root)
+        frame_section06 = RegexCalcFrame(root)
+        frame_section07 = ExecuteFrame(root)
 
-frame_section01.grid(row=0, column=0, sticky='new', padx=5, pady=5)
-frame_section02.grid(row=1, column=0, sticky='new', padx=5, pady=5)
-frame_section03.grid(row=2, column=0, sticky='nesw', padx=5, pady=5)
-frame_section04.grid(row=3, column=0, sticky='new', padx=5, pady=(5, 0))
-frame_section05.grid(row=4, column=0, sticky='new', padx=5, pady=(0, 5))
-frame_section06.grid(row=5, column=0, padx=5, pady=5)
-frame_section07.grid(row=6, column=0, sticky='new', padx=5, pady=5)
+        frame_section01.grid(row=0, column=0, sticky='new', padx=5, pady=5)
+        frame_section02.grid(row=1, column=0, sticky='new', padx=5, pady=5)
+        frame_section03.grid(row=2, column=0, sticky='nesw', padx=5, pady=5)
+        frame_section04.grid(row=3, column=0, sticky='new', padx=5, pady=(5, 0))
+        frame_section05.grid(row=4, column=0, sticky='new', padx=5, pady=(0, 5))
+        frame_section06.grid(row=5, column=0, padx=5, pady=5)
+        frame_section07.grid(row=6, column=0, sticky='new', padx=5, pady=5)
 
-root.mainloop()
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title('a2k')
+    root.geometry('640x480+100+100')
+    Main(root).grid(sticky="nsew")
+    root.grid_rowconfigure(2, weight=1)
+    root.grid_columnconfigure(0, weight=1)
+
+    root.mainloop()
