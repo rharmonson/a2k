@@ -5,9 +5,23 @@
 
 import tkinter as tk
 from tkinter import ttk
+from tkinter import filedialog
 import os
 import glob
 import re
+
+
+class SelectPath:
+    def __init__(self):
+        path = filedialog.askdirectory()
+
+
+class FileType:
+    def __init__(self):
+        # need to revise for cAsE
+        music_types = "'*.mp3', '*.flac'"
+        photo_types = "'*.jpg', '*.png', '*.gif', '*'"
+        video_types = "'*.mkv', '*.mp4', '*.sub', '*.srt'"
 
 
 class PathFrame(tk.Frame):
@@ -18,7 +32,8 @@ class PathFrame(tk.Frame):
         path_label = ttk.Label(self, text='Directory Path:',
                                background='lightgrey')
         path_entry = ttk.Entry(self, font=('Arial', 12))
-        path_select_button = ttk.Button(self, text='Select', width=8)
+        path_select_button = ttk.Button(self, text='Select', width=8,
+                                        command=SelectPath)
 
         path_label.pack(anchor='w')
         path_entry.pack(side='left', anchor='n', expand=1, fill='x')
