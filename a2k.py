@@ -10,8 +10,9 @@ from tkinter import ttk
 class PathFrame(tk.Frame):
     def __init__(self, parent):
         super().__init__()
+        self.configure(background='lightgrey')
 
-        path_label = ttk.Label(self, text='Directory Path:')
+        path_label = ttk.Label(self, text='Directory Path:', background='lightgrey')
         path_entry = ttk.Entry(self, font=('Arial', 12))
         path_select_button = ttk.Button(self, text='Select', width=8)
 
@@ -23,6 +24,7 @@ class PathFrame(tk.Frame):
 class TypeFrame(tk.Frame):
     def __init__(self, parent):
         super().__init__()
+        self.configure(background='lightgrey')
 
         mchkvar = tk.IntVar()
         pchkvar = tk.IntVar()
@@ -30,12 +32,12 @@ class TypeFrame(tk.Frame):
         # Why is it necessary to assign value?
         vchkvar = 1
 
-        type_label = ttk.Label(self, text='File Type:')
+        type_label = ttk.Label(self, text='File Type:', background='lightgrey')
         music_chkbox = tk.Checkbutton(self, text='Music', variable=mchkvar)
         photo_chkbox = tk.Checkbutton(self, text='Photo', variable=pchkvar)
         video_chkbox = tk.Checkbutton(self, text='Video', variable=vchkvar)
         video_chkbox.select()
-        custom_label = ttk.Label(self, text='Custom')
+        custom_label = ttk.Label(self, text='Custom', background='lightgrey')
         custom_entry = ttk.Entry(self, font=('Arial', 10))
         help_type_button = ttk.Button(self, text='?', width=2)
 
@@ -54,10 +56,11 @@ class FilesFrame(tk.Frame):
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
+        self.configure(background='lightgrey')
 
-        files_label = ttk.Label(self, text='Current Files')
+        files_label = ttk.Label(self, text='Current Files', background='lightgrey')
         files_list = tk.Listbox(self, font=('Arial', 12))
-        rename_label = ttk.Label(self, text='Renamed Files')
+        rename_label = ttk.Label(self, text='Renamed Files', background='lightgrey')
         rename_list = tk.Listbox(self, font=('Arial', 12))
 
         files_label.grid(row=0, column=0, sticky='n')
@@ -69,8 +72,9 @@ class FilesFrame(tk.Frame):
 class RegexFrame(tk.Frame):
     def __init__(self, parent):
         super().__init__()
+        self.configure(background='lightgrey')
 
-        regex_label = ttk.Label(self, text='Regex:', width=8)
+        regex_label = ttk.Label(self, text='Regex:', background='lightgrey', width=8)
         regex_entry = ttk.Entry(self, font=('Arial', 12))
         clear_button = ttk.Button(self, text='Clear', width=8)
 
@@ -82,8 +86,9 @@ class RegexFrame(tk.Frame):
 class RenameFrame(tk.Frame):
     def __init__(self, parent):
         super().__init__()
+        self.configure(background='lightgrey')
 
-        rename_label = ttk.Label(self, text='Rename:', width=8)
+        rename_label = ttk.Label(self, text='Rename:', background='lightgrey', width=8)
         rename_entry = ttk.Entry(self, font=('Arial', 12))
         test_button = ttk.Button(self, text='Test', width=8)
 
@@ -95,6 +100,7 @@ class RenameFrame(tk.Frame):
 class RegexCalcFrame(tk.Frame):
     def __init__(self, parent):
         super().__init__()
+        self.configure(background='lightgrey')
 
         calc_button01 = ttk.Button(self, text='b01', width=3)
         calc_button02 = ttk.Button(self, text='b02', width=3)
@@ -150,6 +156,7 @@ class ExecuteFrame(tk.Frame):
 
         execute_button = ttk.Button(self, text='Execute', width=8)
         execute_button.pack(side='right', anchor='w')
+        self.configure(background='lightgrey')
 
 
 class Main(tk.Frame):
@@ -177,6 +184,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.title('a2k')
     root.geometry('640x480+100+100')
+    root.configure(background='lightgrey')
     Main(root).grid(sticky="nsew")
     root.grid_rowconfigure(2, weight=1)
     root.grid_columnconfigure(0, weight=1)
